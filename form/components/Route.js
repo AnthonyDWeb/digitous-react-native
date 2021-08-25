@@ -1,17 +1,26 @@
-import React, { Children } from 'react'
-import { TouchableOpacity } from 'react-native'
+import React from 'react'
+import { TouchableOpacity, Text, StyleSheet } from 'react-native'
 import { useHistory } from 'react-router-native'
 
-export default function Route() {
-
+export default function Route({Children, to}) {
     const History = useHistory()
+
     const handlePress = () => {
-      history.push(to)  
+      History.push(to)  
     }
 
     return (
-        <TouchableOpacity onPress={handlePress}>
-           <Text>{Children}</Text> 
+        <TouchableOpacity onPress={handlePress} style={styles.btn}>
+           <Text style={styles.txt}>{Children}</Text> 
         </TouchableOpacity>
     )
 }
+
+const styles = StyleSheet.create({
+  btn:{
+  backgroundColor: "black"
+  },
+  txt:{
+    color: "white"
+  },
+})
